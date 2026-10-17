@@ -1,0 +1,191 @@
+{
+    "start_ash_action": {
+        "action": "DoNothing",
+        "next": [
+            "enter_ash_action",
+            "[JumpBack]return_to_battle_center"
+        ]
+    },
+    "enter_ash_action": {
+        "recognition": "TemplateMatch",
+        "template": "ash_mission/ash_action.png",
+        "threshold": 0.8,
+        "action": "Click",
+        "post_wait_freezes": 2000,
+        "next": [
+            "process_pending_missions"
+        ]
+    },
+    "process_pending_missions": {
+        "next": [
+            "check_ash_mission_progress",
+            "swipe_then_check_ash_mission_status",
+            "start_start_ash_mission",
+            "return_to_garage"
+        ]
+    },
+    "start_start_ash_mission": {
+        "recognition": "TemplateMatch",
+        "template": "ash_mission/start_ash_mission.png",
+        "action": "Click",
+        "threshold": 0.9,
+        "post_wait_freezes": 1000,
+        "next": [
+            "start_mecha_supply",
+            "send_to_start_mission",
+            "return_to_garage"
+        ]
+    },
+    "send_to_start_mission": {
+        "recognition": "TemplateMatch",
+        "template": "ash_mission/send_to_start_ash_mission.png",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "process_pending_missions",
+            "return_to_garage"
+        ]
+    },
+    "start_complete_ash_mission": {
+        "recognition": "TemplateMatch",
+        "template": "ash_mission/to_be_processed.png",
+        "post_wait_freezes": 1000,
+        "action": "Click",
+        "next": [
+            "click_ash_mission_complete_third_option",
+            "click_ash_mission_complete_second_option",
+            "click_ash_mission_complete_first_option"
+        ]
+    },
+    "click_ash_mission_complete_third_option": {
+        "recognition": "TemplateMatch",
+        "template": "ash_mission/ash_mission_complete_option.png",
+        "action": "Click",
+        "roi": [
+            847,
+            453,
+            396,
+            185
+        ],
+        "post_wait_freezes": 1000,
+        "next": [
+            "receive_reward_then_complete_ash_mission"
+        ]
+    },
+    "click_ash_mission_complete_second_option": {
+        "recognition": "TemplateMatch",
+        "template": "ash_mission/ash_mission_complete_option.png",
+        "action": "Click",
+        "roi": [
+            427,
+            457,
+            400,
+            178
+        ],
+        "post_wait_freezes": 1000,
+        "next": [
+            "receive_reward_then_complete_ash_mission"
+        ]
+    },
+    "click_ash_mission_complete_first_option": {
+        "recognition": "TemplateMatch",
+        "template": "ash_mission/ash_mission_complete_option.png",
+        "action": "Click",
+        "roi": [
+            10,
+            457,
+            400,
+            178
+        ],
+        "post_wait_freezes": 1000,
+        "next": [
+            "receive_reward_then_complete_ash_mission"
+        ]
+    },
+    "check_ash_mission_complete_success": {
+        "recognition": "OCR",
+        "expected": "请点击任意空白处关闭界面",
+        "action": "DoNothing",
+        "next": [
+            "click_ash_mission_complete_second_option"
+        ]
+    },
+    "receive_reward_then_complete_ash_mission": {
+        "recognition": "OCR",
+        "expected": "收下报酬",
+        "action": "Click",
+        "next": [
+            "process_pending_missions"
+        ]
+    },
+    "swipe_then_check_ash_mission_status": {
+        "recognition": "TemplateMatch",
+        "template": "ash_mission/unprocessed_ash_mission.png",
+        "action": "Swipe",
+        "begin": [
+            989,
+            324,
+            96,
+            35
+        ],
+        "end": [
+            980,
+            161,
+            105,
+            37
+        ],
+        "threshold": 0.85,
+        "next": [
+            "start_start_ash_mission"
+        ]
+    },
+    "start_mecha_supply": {
+        "recognition": "Custom",
+        "custom_recognition": "mecha_supply_reco",
+        "action": "Click",
+        "next": [
+            "start_start_ash_mission"
+        ]
+    },
+    "check_ash_mission_progress": {
+        "recognition": "Custom",
+        "custom_recognition": "ash_mission_progress_reco",
+        "action": "DoNothing",
+        "next": [
+            "start_complete_ash_mission",
+            "swipe_then_check_ash_mission_status",
+            "start_start_ash_mission",
+            "return_to_garage"
+        ]
+    },
+    "HighMissionOCR": {
+        "recognition": "TemplateMatch",
+        "threshold": 0.9,
+        "roi": [
+            12,
+            525,
+            1236,
+            186
+        ]
+    },
+    "MediumMissionOCR": {
+        "recognition": "TemplateMatch",
+        "threshold": 0.9,
+        "roi": [
+            12,
+            525,
+            1236,
+            186
+        ]
+    },
+    "LowMissionOCR": {
+        "recognition": "TemplateMatch",
+        "threshold": 0.9,
+        "roi": [
+            12,
+            525,
+            1236,
+            186
+        ]
+    }
+}

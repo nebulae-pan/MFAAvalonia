@@ -1,0 +1,99 @@
+{
+    "launch_mecharashi": {
+        "action": "StartApp",
+        "package": "com.zlongame.pd.mecharashi",
+        "post_delay": 3000,
+        "next": [
+            "check_launching_status"
+        ]
+    },
+    "shutdown_mecharashi": {
+        "action": "StopApp",
+        "package": "com.zlongame.pd.mecharashi",
+        "post_delay": 3000
+    },
+    "check_launching_status": {
+        "action": "DoNothing",
+        "next": [
+            "login_interrupted",
+            "update_interrpted",
+            "check_is_in_garage",
+            "try_to_return_to_garage_without_next",
+            "try_to_return_to_garage_from_battle_center_without_next",
+            "close_announcement",
+            "enter_game",
+            "sign_in_continue",
+            "check_is_launching"
+        ]
+    },
+    "check_is_launching": {
+        "action": "DoNothing",
+        "post_wait_freezes": 25000,
+        "next": [
+            "check_launching_status"
+        ]
+    },
+    "net_interrupted": {
+        "recognition": "OCR",
+        "expected": "网络链接失败请重新连接",
+        "action": "DoNothing",
+        "next": [
+            "reconnect_to_server"
+        ]
+    },
+    "reconnect_to_server": {
+        "recognition": "TemplateMatch",
+        "template": "reconnect.png",
+        "action": "Click",
+        "next": [
+            "check_is_launching"
+        ]
+    },
+    "close_announcement": {
+        "recognition": "TemplateMatch",
+        "template": "close_announcement.png",
+        "action": "Click",
+        "next": [
+            "enter_game"
+        ]
+    },
+    "enter_game": {
+        "recognition": "OCR",
+        "expected": "进入游戏",
+        "action": "Click",
+        "post_wait_freezes": 15000,
+        "next": [
+            "sign_in_continue"
+        ]
+    },
+    "sign_in_continue": {
+        "recognition": "OCR",
+        "expected": "本日签到",
+        "action": "Click",
+        "next": [
+            "close_sign_in_dialog"
+        ]
+    },
+    "close_sign_in_dialog": {
+        "recognition": "TemplateMatch",
+        "template": "daily/close_sign_in.png",
+        "action": "Click",
+        "next": []
+    },
+    "update_interrpted": {
+        "recognition": "OCR",
+        "expected": "游戏版本已更新，请重新登录",
+        "action": "DoNothing",
+        "next": [
+            "confirm_update"
+        ]
+    },
+    "confirm_update": {
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click",
+        "next": [
+            "launch_mecharashi"
+        ]
+    }
+}

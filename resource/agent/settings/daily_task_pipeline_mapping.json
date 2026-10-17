@@ -1,0 +1,68 @@
+{
+    "记忆风暴": {
+        "task": "real_start_memory_storm",
+        "pipeline_override": {
+            "real_finish_memory_storm": {
+                "action": "DoNothing",
+                "next": [
+                    "back_to_daliy_tasks_page_then_continue"
+                ]
+            }
+        }
+    },
+    "快速演算": {
+        "task": "automic_calculation",
+        "pipeline_override": {
+            "real_finish_automic_calculation": {
+                "action": "DoNothing",
+                "next": [
+                    "back_to_daliy_tasks_page_then_continue"
+                ]
+            }
+        }
+    },
+    "首领": {
+        "task": "le_reward_sweep",
+        "pipeline_override": {
+            "real_finish_elimination": {
+                "action": "DoNothing",
+                "next": [
+                    "back_to_daliy_tasks_page_then_continue"
+                ]
+            }
+        }
+    },
+    "敌方单位": {
+        "task": "start_target_action",
+        "time_limit": "6:00:00",
+        "pipeline_override": {
+            "real_finish_target_action": {
+                "action": "DoNothing",
+                "next": [
+                    "return_to_garage"
+                ]
+            },
+            "try_to_return_to_garage_without_next": {
+                "next": [
+                    "process_daily_tasks"
+                ]
+            },
+            "try_to_return_to_garage_from_battle_center_without_next": {
+                "next": [
+                    "process_daily_tasks"
+                ]
+            }
+        }
+    },
+    "芯片": {
+        "task": "enter_unit_detail_page",
+        "pipeline_override": {
+            "real_finish_unit_overclock": {
+                "action": "DoNothing",
+                "next": [
+                    "back_to_daliy_tasks_page_then_continue"
+                ]
+            }
+        }
+    }
+}

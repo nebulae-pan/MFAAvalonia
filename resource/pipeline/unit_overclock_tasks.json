@@ -1,0 +1,99 @@
+{
+    "start_unit_overclock": {
+        "next": [
+            "enter_unit_detail_page",
+            "[JumpBack]return_to_garage"
+        ]
+    },
+    "enter_unit_detail_page": {
+        "recognition": "OCR",
+        "expected": "明日香",
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "enter_neural_drive"
+        ]
+    },
+    "enter_neural_drive": {
+        "recognition": "OCR",
+        "expected": "神经驱动",
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "enter_overclock_page",
+            "enter_increase_page"
+        ]
+    },
+    "enter_overclock_page": {
+        "recognition": "OCR",
+        "expected": "超频",
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "check_overclock_progress",
+            "to_next_unit"
+        ]
+    },
+    "enter_increase_page": {
+        "recognition": "OCR",
+        "expected": "增幅",
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "check_overclock_progress",
+            "to_next_unit"
+        ]
+    },
+    "check_overclock_progress": {
+        "recognition": "Custom",
+        "custom_recognition": "overclock_progress_reco",
+        "next": [
+            "process_increase",
+            "process_overclock"
+        ]
+    },
+    "to_next_unit": {
+        "recognition": "TemplateMatch",
+        "template": "overclock/next.png",
+        "action": "Click",
+        "next": [
+            "check_overclock_progress",
+            "to_next_unit"
+        ]
+    },
+    "process_increase": {
+        "recognition": "OCR",
+        "expected": "增幅",
+        "action": "Click",
+        "roi": [
+            872,
+            368,
+            279,
+            309
+        ],
+        "post_wait_freezes": 2000,
+        "next": [
+            "real_finish_unit_overclock"
+        ]
+    },
+    "process_overclock": {
+        "recognition": "OCR",
+        "expected": "超频",
+        "action": "Click",
+        "roi": [
+            872,
+            368,
+            279,
+            309
+        ],
+        "post_wait_freezes": 2000,
+        "next": [
+            "real_finish_unit_overclock"
+        ]
+    },
+    "real_finish_unit_overclock": {
+        "next": [
+            "return_to_garage"
+        ]
+    }
+}

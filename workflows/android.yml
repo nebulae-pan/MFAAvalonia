@@ -12,12 +12,12 @@ permissions:
 # Resource project integration settings. Resource developers normally only
 # need to edit this block when copying the workflow to another repository.
 env:
-  PROJECT_NAME: MaaExample
-  APPLICATION_ID: io.github.example.maaexample
-  LAUNCHER_LABEL: MaaExample
+  PROJECT_NAME: MaaMecharashi
+  APPLICATION_ID: io.nebula.maa.mecharashi
+  LAUNCHER_LABEL: MaaMecharashi
   LAUNCHER_ICON: android/icon.png
   RESOURCE_ROOT: .
-  MFA_REPOSITORY: MaaXYZ/MFAAvalonia
+  MFA_REPOSITORY: nebulae-pan/MFAAvalonia
   MFA_REF: main
   P4A_ENTRYPOINT: agent/main.py
   P4A_REF: v2026.05.09

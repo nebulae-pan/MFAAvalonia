@@ -1,0 +1,42 @@
+{
+    "start_receive_mail": {
+        "next": [
+            "no_unread_mails",
+            "process_mail_tasks",
+            "[JumpBack]return_to_garage"
+        ]
+    },
+    "process_mail_tasks": {
+        "recognition": "TemplateMatch",
+        "template": "daily/mails.png",
+        "action": "Click",
+        "post_delay": 2000,
+        "threshold": 0.95,
+        "next": [
+            "click_one_key_receive_mail"
+        ]
+    },
+    "no_unread_mails": {
+        "recognition": "TemplateMatch",
+        "template": "daily/no_unread_mails.png",
+        "threshold": 0.98,
+        "action": "DoNothing"
+    },
+    "click_one_key_receive_mail": {
+        "recognition": "OCR",
+        "expected": "一键领取",
+        "post_delay": 2000,
+        "action": "Click",
+        "next": [
+            "check_mail_received"
+        ]
+    },
+    "check_mail_received": {
+        "recognition": "OCR",
+        "expected": "点击任意位置继续",
+        "action": "Click",
+        "next": [
+            "return_to_garage"
+        ]
+    }
+}

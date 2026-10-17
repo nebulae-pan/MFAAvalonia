@@ -1,0 +1,87 @@
+{
+    "start_memory_storm": {
+        "action": "DoNothing",
+        "next": [
+            "ms_enter_expansion_mission",
+            "[JumpBack]return_to_battle_center"
+        ]
+    },
+    "ms_enter_expansion_mission": {
+        "recognition": "OCR",
+        "expected": "拓展委托",
+        "action": "Click",
+        "next": [
+            "enter_memory_storm"
+        ]
+    },
+    "enter_memory_storm": {
+        "recognition": "OCR",
+        "expected": "记忆风暴",
+        "action": "Click",
+        "next": [
+            "real_start_memory_storm"
+        ]
+    },
+    "real_start_memory_storm": {
+        "action": "DoNothing",
+        "post_wait_freezes": 1000,
+        "next": [
+            "check_memory_storm_progress",
+            "real_finish_memory_storm"
+        ]
+    },
+    "check_memory_storm_progress": {
+        "recognition": "Custom",
+        "custom_recognition": "memory_storm_progress_reco",
+        "action": "DoNothing",
+        "post_wait_freezes": 500,
+        "next": [
+            "reward_sweep"
+        ]
+    },
+    "check_memory_storm_progress_again": {
+        "recognition": "Custom",
+        "custom_recognition": "memory_storm_progress_reco",
+        "action": "DoNothing",
+        "post_wait_freezes": 500,
+        "next": [
+            "reward_sweep_again"
+        ]
+    },
+    "reward_sweep": {
+        "recognition": "OCR",
+        "expected": "扫荡",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "reward_sweep_again",
+            "ms_reward_sweep_end",
+            "[JumpBack]recovery_energy"
+        ]
+    },
+    "reward_sweep_again": {
+        "recognition": "OCR",
+        "expected": "再次扫荡",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "threshold": 0.99,
+        "next": [
+            "check_memory_storm_progress_again",
+            "ms_reward_sweep_end"
+        ]
+    },
+    "ms_reward_sweep_end": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "action": "Click",
+        "next": [
+            "real_finish_memory_storm"
+        ]
+    },
+    "real_finish_memory_storm": {
+        "action": "DoNothing",
+        "next": [
+            "return_to_garage"
+        ]
+    }
+}

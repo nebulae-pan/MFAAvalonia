@@ -1,0 +1,111 @@
+{
+    "return_to_garage": {
+        "recognition": "Custom",
+        "custom_recognition": "combine_tasks_reco",
+        "action": "DoNothing",
+        "next": [
+            "try_to_return_to_garage_without_next",
+            "try_to_return_to_garage_from_battle_center_without_next"
+        ]
+    },
+    "return_to_battle_center": {
+        "recognition": "Custom",
+        "custom_recognition": "combine_tasks_reco",
+        "action": "DoNothing",
+        "next": [
+            "try_to_enter_battle_center",
+            "try_to_return_to_garage",
+            "check_is_in_battle_center"
+        ]
+    },
+    "try_to_enter_battle_center": {
+        "recognition": "OCR",
+        "expected": "作战中心",
+        "post_wait_freezes": 2000,
+        "action": "Click"
+    },
+    "try_to_return_to_garage": {
+        "recognition": "TemplateMatch",
+        "template": "back_to_home.png",
+        "action": "Click",
+        "next": [
+            "return_to_battle_center"
+        ]
+    },
+    "check_is_in_battle_center": {
+        "recognition": "TemplateMatch",
+        "template": "main_page/garage.png",
+        "action": "DoNothing"
+    },
+    "check_is_in_garage": {
+        "recognition": "TemplateMatch",
+        "template": "main_page/battle_center.png",
+        "action": "DoNothing"
+    },
+    "try_to_return_to_garage_without_next": {
+        "recognition": "TemplateMatch",
+        "template": "back_to_home.png",
+        "post_wait_freezes": 500,
+        "action": "Click"
+    },
+    "try_to_return_to_garage_from_battle_center_without_next": {
+        "recognition": "TemplateMatch",
+        "template": "main_page/garage.png",
+        "post_wait_freezes": 1000,
+        "action": "Click"
+    },
+    "back_to_prev_page": {
+        "recognition": "TemplateMatch",
+        "template": "back.png",
+        "action": "Click"
+    },
+    "login_interrupted": {
+        "recognition": "OCR",
+        "expected": "您的账号在其他设备登录！",
+        "action": "DoNothing",
+        "next": [
+            "login_interrupted_continue"
+        ]
+    },
+    "login_interrupted_continue": {
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click",
+        "post_wait_freezes": 3000,
+        "next": [
+            "close_announcement"
+        ]
+    },
+    "recovery_energy": {
+        "recognition": "OCR",
+        "expected": "使用备用能源回复",
+        "action": "DoNothing",
+        "post_wait_freezes": 1000,
+        "next": [
+            "confirm_recovery_energy"
+        ]
+    },
+    "confirm_recovery_energy": {
+        "recognition": "TemplateMatch",
+        "template": "main_page/use_backup_energy.png",
+        "threshold": 0.99,
+        "action": "Click",
+        "next": [
+            "cancel_recovery_energy"
+        ]
+    },
+    "recovery_energy_dialog_cancel": {
+        "recognition": "OCR",
+        "expected": "使用备用能源回复",
+        "action": "DoNothing",
+        "next": [
+            "cancel_recovery_energy"
+        ]
+    },
+    "cancel_recovery_energy": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "action": "Click",
+        "next": []
+    }
+}

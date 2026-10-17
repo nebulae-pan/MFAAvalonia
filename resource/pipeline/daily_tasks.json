@@ -1,0 +1,63 @@
+{
+    "process_daily_tasks": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "enter_daily_tasks",
+            "[JumpBack]return_to_garage"
+        ]
+    },
+    "enter_daily_tasks": {
+        "recognition": "TemplateMatch",
+        "template": "daily/daily_task.png",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "receive_all_daily_task_reward",
+            "receive_daily_task_reward",
+            "process_unfinished_daily_tasks",
+            "back_to_prev_page"
+        ]
+    },
+    "receive_all_daily_task_reward": {
+        "recognition": "OCR",
+        "expected": "全部领取",
+        "action": "Click",
+        "next": [
+            "daily_task_continue"
+        ]
+    },
+    "receive_daily_task_reward": {
+        "recognition": "TemplateMatch",
+        "template": "daily/receive_daily_task_reward.png",
+        "action": "Click",
+        "next": [
+            "daily_task_continue"
+        ]
+    },
+    "daily_task_continue": {
+        "recognition": "OCR",
+        "expected": "点击任意位置继续",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "daily_task_continue",
+            "process_unfinished_daily_tasks",
+            "back_to_prev_page"
+        ]
+    },
+    "process_unfinished_daily_tasks": {
+        "recognition": "Custom",
+        "custom_recognition": "daily_tasks_reco"
+    },
+    "back_to_daliy_tasks_page_then_continue": {
+        "recognition": "TemplateMatch",
+        "template": "back.png",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "receive_all_daily_task_reward",
+            "receive_daily_task_reward",
+            "back_to_daliy_tasks_page_then_continue"
+        ]
+    }
+}

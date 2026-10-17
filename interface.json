@@ -1,0 +1,182 @@
+{
+    "interface_version": 2,
+    "name": "Mecharashi",
+    "controller": [
+        {
+            "name": "安卓端",
+            "type": "Adb"
+        }
+    ],
+    "resource": [
+        {
+            "name": "官服",
+            "path": [
+                "{PROJECT_DIR}/resource"
+            ]
+        }
+    ],
+    "agent": {
+        "child_exec": "python",
+        "child_args": [
+            "{PROJECT_DIR}/resource/agent/main.py"
+        ]
+    },
+    "task": [
+        {
+            "name": "启动游戏",
+            "entry": "launch_mecharashi"
+        },
+        {
+            "name": "灰烬行动",
+            "entry": "start_ash_action",
+            "option": [
+                "特级委托",
+                "加急委托",
+                "常规委托"
+            ]
+        },
+        {
+            "name": "日常任务",
+            "entry": "process_daily_tasks"
+        },
+        {
+            "name": "记忆风暴",
+            "entry": "start_memory_storm"
+        },
+        {
+            "name": "光刻行动",
+            "entry": "process_litho_action_tasks"
+        },
+        {
+            "name": "邮件领取",
+            "entry": "start_receive_mail"
+        },
+        {
+            "name": "关闭游戏",
+            "entry": "shutdown_mecharashi"
+        }
+    ],
+    "option": {
+        "特级委托": {
+            "type": "select",
+            "cases": [
+                {
+                    "name": "GeekX",
+                    "pipeline_override": {
+                        "HighMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/GeekX.png"
+                        }
+                    }
+                },
+                {
+                    "name": "创新动力",
+                    "pipeline_override": {
+                        "HighMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/创新动力.png"
+                        }
+                    }
+                },
+                {
+                    "name": "武装工坊",
+                    "pipeline_override": {
+                        "HighMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/武装工坊.png"
+                        }
+                    }
+                },
+                {
+                    "name": "火花塞",
+                    "pipeline_override": {
+                        "HighMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/火花塞.png"
+                        }
+                    }
+                }
+            ]
+        },
+        "加急委托": {
+            "cases": [
+                {
+                    "name": "GeekX",
+                    "pipeline_override": {
+                        "MediumMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/GeekX.png"
+                        }
+                    }
+                },
+                {
+                    "name": "创新动力",
+                    "pipeline_override": {
+                        "MediumMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/创新动力.png"
+                        }
+                    }
+                },
+                {
+                    "name": "武装工坊",
+                    "pipeline_override": {
+                        "MediumMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/武装工坊.png"
+                        }
+                    }
+                },
+                {
+                    "name": "火花塞",
+                    "pipeline_override": {
+                        "MediumMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/火花塞.png"
+                        }
+                    }
+                }
+            ]
+        },
+        "常规委托": {
+            "cases": [
+                {
+                    "name": "GeekX",
+                    "pipeline_override": {
+                        "LowMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/GeekX.png"
+                        }
+                    }
+                },
+                {
+                    "name": "创新动力",
+                    "pipeline_override": {
+                        "LowMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/创新动力.png"
+                        }
+                    }
+                },
+                {
+                    "name": "武装工坊",
+                    "pipeline_override": {
+                        "LowMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/武装工坊.png"
+                        }
+                    }
+                },
+                {
+                    "name": "火花塞",
+                    "pipeline_override": {
+                        "LowMissionOCR": {
+                            "recognition": "TemplateMatch",
+                            "template": "ash_mission/火花塞.png"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

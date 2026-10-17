@@ -1,0 +1,77 @@
+{
+    "start_target_action": {
+        "action": "DoNothing",
+        "next": [
+            "click_target_action",
+            "check_is_in_battle_center_but_time_limit",
+            "[JumpBack]return_to_battle_center"
+        ]
+    },
+    "click_target_action": {
+        "recognition": "TemplateMatch",
+        "template": "target_action/target_action.png",
+        "action": "Click",
+        "threshold": 0.9,
+        "post_delay": 3000,
+        "next": [
+            "start_action"
+        ]
+    },
+    "start_action": {
+        "recognition": "OCR",
+        "expected": "开始行动",
+        "action": "Click",
+        "post_delay": 15000,
+        "post_wait_freezes": 1000,
+        "next": [
+            "start_battle"
+        ]
+    },
+    "start_battle": {
+        "recognition": "OCR",
+        "expected": "开始战斗",
+        "post_wait_freezes": 6000,
+        "action": "Click",
+        "next": [
+            "start_auto_battle"
+        ]
+    },
+    "start_auto_battle": {
+        "recognition": "OCR",
+        "expected": "自动",
+        "action": "Click",
+        "post_delay": 100000,
+        "next": [
+            "check_battle_finished"
+        ]
+    },
+    "check_battle_finished": {
+        "action": "DoNothing",
+        "post_delay": 100000,
+        "next": [
+            "finish_battle",
+            "check_battle_finished"
+        ]
+    },
+    "finish_battle": {
+        "recognition": "OCR",
+        "expected": "战斗结束",
+        "action": "Click",
+        "post_wait_freezes": 2000,
+        "threshold": 0.9,
+        "next": [
+            "real_finish_target_action"
+        ]
+    },
+    "check_is_in_battle_center_but_time_limit": {
+        "recognition": "TemplateMatch",
+        "template": "main_page/garage.png",
+        "action": "DoNothing"
+    },
+    "real_finish_target_action": {
+        "action": "DoNothing",
+        "next": [
+            "return_to_garage"
+        ]
+    }
+}

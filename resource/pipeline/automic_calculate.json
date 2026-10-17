@@ -1,0 +1,123 @@
+{
+    "start_automic_calculate": {
+        "action": "DoNothing",
+        "next": [
+            "chip_enter_expansion_mission",
+            "[JumpBack]return_to_battle_center"
+        ]
+    },
+    "chip_enter_expansion_mission": {
+        "recognition": "OCR",
+        "expected": "拓展委托",
+        "action": "Click",
+        "post_wait_freezes": 1500,
+        "next": [
+            "find_tactical_simulation"
+        ]
+    },
+    "find_tactical_simulation": {
+        "recognition": "OCR",
+        "expected": "拓展委托",
+        "action": "Swipe",
+        "begin": [
+            877,
+            345,
+            60,
+            97
+        ],
+        "end": [
+            86,
+            276,
+            120,
+            156
+        ],
+        "duration": 1000,
+        "next": [
+            "enter_tactical_simulation"
+        ]
+    },
+    "enter_tactical_simulation": {
+        "recognition": "OCR",
+        "expected": "战术模拟",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "automic_calculation"
+        ]
+    },
+    "automic_calculation": {
+        "recognition": "OCR",
+        "expected": "自动演算",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "chip_type_calculation"
+        ]
+    },
+    "chip_type_calculation": {
+        "recognition": "OCR",
+        "expected": "β芯片演算",
+        "action": "Click",
+        "next": [
+            "chip_color_calculation"
+        ]
+    },
+    "chip_color_calculation": {
+        "recognition": "OCR",
+        "expected": "红色芯片",
+        "action": "Click",
+        "next": [
+            "process_auto_calculation"
+        ]
+    },
+    "process_auto_calculation": {
+        "next": [
+            "chip_automic_calculation_end",
+            "click_auto_calculation"
+        ]
+    },
+    "click_auto_calculation": {
+        "recognition": "OCR",
+        "expected": "自动演算",
+        "action": "Click",
+        "roi": [
+            655,
+            54,
+            603,
+            628
+        ],
+        "post_delay": 1000,
+        "next": [
+            "check_auto_calculation_success",
+            "[JumpBack]recovery_energy"
+        ]
+    },
+    "check_auto_calculation_success": {
+        "recognition": "OCR",
+        "expected": "获得道具",
+        "action": "Click",
+        "next": [
+            "process_auto_calculation"
+        ]
+    },
+    "chip_automic_calculation_end": {
+        "recognition": "TemplateMatch",
+        "template": "chip/chip_automic_calculation_end.png",
+        "action": "DoNothing",
+        "roi": [
+            688,
+            475,
+            523,
+            245
+        ],
+        "next": [
+            "real_finish_automic_calculation"
+        ]
+    },
+    "real_finish_automic_calculation": {
+        "action": "DoNothing",
+        "next": [
+            "return_to_garage"
+        ]
+    }
+}

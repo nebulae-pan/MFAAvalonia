@@ -1,0 +1,33 @@
+{
+    "enter_warehouse": {
+        "recognition": "OCR",
+        "expected": "仓库",
+        "action": "Click",
+        "next": ["[JumpBack]return_to_garage"]
+    },
+    "swipe_to_end_of_list": {
+        "begin": [
+            769,
+            584,
+            172,
+            72
+        ],
+        "end": [
+            780,
+            106,
+            140,
+            60
+        ],
+        "action": "Swipe",
+        "post_wait_freezes": 200,
+        "next": [
+            "check_is_to_end",
+            "swipe_to_end_of_list"
+        ]
+    },
+    "check_is_to_end": {
+        "recognition": "Custom",
+        "custom_recognition": "swipe_to_end_reco",
+        "next": []
+    }
+}

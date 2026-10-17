@@ -1,0 +1,38 @@
+{
+    "process_eliet_battles_tasks": {
+        "next": [
+            "enter_eliet_battles_tasks",
+            "[JumpBack]return_to_garage"
+        ]
+    },
+    "eliet_enter_eliet_battles_tasks": {
+        "recognition": "OCR",
+        "expected": "拓展委托",
+        "action": "Click",
+        "post_wait_freezes": 1500,
+        "next": [
+            "enter_eliet_battles_tasks"
+        ]
+    },
+    "enter_eliet_battles_tasks": {
+        "recognition": "OCR",
+        "expected": "精英战役",
+        "action": "Click",
+        "next": []
+    },
+    "test": {
+        "recognition": "Custom",
+        "custom_recognition": "warehouse_reco",
+        "next": []
+    },
+    "RecoORC": {
+        "recognition": "OCR",
+        "expected": "1",
+        "roi": [
+            583,
+            66,
+            502,
+            610
+        ]
+    }
+}

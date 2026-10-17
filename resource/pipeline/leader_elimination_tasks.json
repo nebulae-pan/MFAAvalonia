@@ -1,0 +1,82 @@
+{
+    "start_elimination": {
+        "action": "DoNothing",
+        "next": [
+            "le_enter_expansion_mission",
+            "[JumpBack]return_to_battle_center"
+        ]
+    },
+    "le_enter_expansion_mission": {
+        "recognition": "OCR",
+        "expected": "拓展委托",
+        "action": "Click",
+        "next": [
+            "enter_elimination"
+        ]
+    },
+    "enter_elimination": {
+        "recognition": "OCR",
+        "expected": "首领剿灭",
+        "action": "Click",
+        "next": [
+            "real_start_elimination"
+        ]
+    },
+    "real_start_elimination": {
+        "action": "DoNothing",
+        "post_wait_freezes": 1000,
+        "next": [
+            "le_reward_sweep"
+        ]
+    },
+    "le_reward_sweep": {
+        "recognition": "OCR",
+        "expected": "扫荡",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "le_click_reward_sweep"
+        ]
+    },
+    "le_click_reward_sweep": {
+        "recognition": "OCR",
+        "expected": "扫荡",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "roi": [
+            245,
+            465,
+            788,
+            187
+        ],
+        "next": [
+            "finish_elimination"
+        ]
+    },
+    "finish_elimination": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "action": "Click",
+        "next": [
+            "click_empty_zone"
+        ]
+    },
+    "click_empty_zone": {
+        "roi": [
+            31,
+            110,
+            155,
+            365
+        ],
+        "action": "Click",
+        "next": [
+            "real_finish_elimination"
+        ]
+    },
+    "real_finish_elimination": {
+        "action": "DoNothing",
+        "next": [
+            "return_to_garage"
+        ]
+    }
+}
