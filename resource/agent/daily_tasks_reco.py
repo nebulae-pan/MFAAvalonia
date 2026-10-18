@@ -39,6 +39,10 @@ class DailyTasksRecongition(CustomRecognition):
             return None
 
         for result in reco_detail.all_results:
+            print(result)
+
+        print("end")
+        for result in reco_detail.all_results:
             if(self.unfinished_tasks_notion not in result.text):
                 continue
             self.process_daily_tasks_result(context, argv, result)

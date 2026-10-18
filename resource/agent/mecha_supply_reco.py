@@ -67,7 +67,7 @@ class StarMechaSupplyRecognition(CustomRecognition):
             f"{name}MissionOCR",
             argv.image
         )
-        if reco_detail == None:
+        if reco_detail == None or reco_detail.best_result == None:
             print(f"not {name}, skip {level}. (should not happen)")
             return False
 

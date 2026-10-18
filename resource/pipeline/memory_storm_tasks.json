@@ -24,7 +24,7 @@
     },
     "real_start_memory_storm": {
         "action": "DoNothing",
-        "post_wait_freezes": 1000,
+        "post_wait_freezes": 1500,
         "next": [
             "check_memory_storm_progress",
             "real_finish_memory_storm"

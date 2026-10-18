@@ -3,6 +3,14 @@ import sys
 from maa.agent.agent_server import AgentServer
 from maa.toolkit import Toolkit
 
+import sys
+import os
+
+# 确保 main.py 所在目录在模块搜索路径中（兼容 runpy.run_path 执行方式）
+_here = os.path.dirname(os.path.abspath(__file__))
+if _here not in sys.path:
+    sys.path.insert(0, _here)
+
 import mecha_supply_reco
 import ash_mission_progress_reco
 import memory_storm_progress_reco
