@@ -12,7 +12,8 @@ from utils import Utils
 
 @AgentServer.custom_recognition("daily_tasks_reco")
 class DailyTasksRecongition(CustomRecognition):
-    config = Utils.load_json("./resource/agent/settings/daily_task_pipeline_mapping.json")
+    AGENT_DIR = Path(__file__).resolve().parent
+    config = Utils.load_json(AGENT_DIR / "settings/daily_task_pipeline_mapping.json")
     unfinished_tasks_notion = "前往"
 
     def analyze(
