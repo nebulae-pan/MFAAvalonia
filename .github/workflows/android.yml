@@ -16,7 +16,7 @@ env:
   RESOURCE_ROOT: .
   MFA_REPOSITORY: nebulae-pan/MFAAvalonia
   MFA_REF: main
-  P4A_ENTRYPOINT: agent/main.py
+  P4A_ENTRYPOINT: resource/agent/main.py
   P4A_REF: v2026.05.09
   P4A_NDK_VERSION: 28.2.13676358
   AVALONIA_VERSION: 11.3.13
