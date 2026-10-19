@@ -63,8 +63,9 @@
         "action": "Click",
         "post_wait_freezes": 15000,
         "next": [
-            "[JumpBack]close_announcement",
-            "sign_in_continue"
+            "close_announcement",
+            "sign_in_continue",
+            "check_is_in_garage"
         ]
     },
     "sign_in_continue": {

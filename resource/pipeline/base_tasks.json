@@ -5,7 +5,8 @@
         "action": "DoNothing",
         "next": [
             "try_to_return_to_garage_without_next",
-            "try_to_return_to_garage_from_battle_center_without_next"
+            "try_to_return_to_garage_from_battle_center_without_next",
+            "check_is_in_garage"
         ]
     },
     "return_to_battle_center": {

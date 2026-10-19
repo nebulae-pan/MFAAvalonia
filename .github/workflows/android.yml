@@ -313,7 +313,7 @@ jobs:
         run: |
           short_sha="${GITHUB_SHA::7}"
           echo "application_id=$APPLICATION_ID" >> "$GITHUB_OUTPUT"
-          echo "display_version=ci.${GITHUB_RUN_NUMBER}-${short_sha}" >> "$GITHUB_OUTPUT"
+          echo "display_version=ci.${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
           echo "output_name=${PROJECT_NAME}-ci.${GITHUB_RUN_NUMBER}-${short_sha}-android-${{ matrix.arch }}.apk" >> "$GITHUB_OUTPUT"
           echo "artifact_name=${PROJECT_NAME}-ci.${GITHUB_RUN_NUMBER}-${short_sha}-android-${{ matrix.arch }}" >> "$GITHUB_OUTPUT"
           launcher_icon=$(realpath -m "resource-source/$LAUNCHER_ICON")

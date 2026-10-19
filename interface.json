@@ -40,10 +40,6 @@
             "entry": "process_daily_tasks"
         },
         {
-            "name": "记忆风暴",
-            "entry": "start_memory_storm"
-        },
-        {
             "name": "光刻行动",
             "entry": "process_litho_action_tasks"
         },

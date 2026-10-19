@@ -1,8 +1,8 @@
 {
     "process_litho_action_tasks": {
         "next": [
-            "enter_eliet_battles_tasks",
-            "[JumpBack]return_to_garage"
+            "litho_enter_litho_action_tasks",
+            "[JumpBack]return_to_battle_center"
         ]
     },
     "litho_enter_litho_action_tasks": {
@@ -11,18 +11,28 @@
         "action": "Click",
         "post_wait_freezes": 1500,
         "next": [
-            "enter_eliet_battles_tasks"
+            "enter_litho_action_tasks"
         ]
     },
     "enter_litho_action_tasks": {
         "recognition": "OCR",
         "expected": "光刻行动",
         "action": "Click",
-        "next": []
+        "next": [
+            "litho_claim"
+        ]
     },
     "litho_claim": {
         "recognition": "OCR",
         "expected": "立即领取",
+        "action": "Click",
+        "next": [
+            "litho_claim_finish"
+        ]
+    },
+    "litho_claim_finish": {
+        "recognition": "OCR",
+        "expected": "点击任意位置继续",
         "action": "Click",
         "next": [
             "real_finish_litho_action"

@@ -35,7 +35,7 @@ class OverclockProgressRecongition(CustomRecognition):
         text = reco_detail.best_result.text
         # 移除百分号并转换为整数
         percentage = int(text.rstrip('%'))
-        if percentage < 100:
+        if percentage < 120:
             return CustomRecognition.AnalyzeResult(
                 box=reco_detail.best_result.box, detail="found result"
             )

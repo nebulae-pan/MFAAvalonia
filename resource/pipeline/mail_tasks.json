@@ -11,7 +11,7 @@
         "template": "daily/mails.png",
         "action": "Click",
         "post_delay": 2000,
-        "threshold": 0.95,
+        "threshold": 0.75,
         "next": [
             "click_one_key_receive_mail"
         ]

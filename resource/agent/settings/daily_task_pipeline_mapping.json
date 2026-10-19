@@ -34,7 +34,7 @@
     },
     "敌方单位": {
         "task": "start_target_action",
-        "time_limit": "6:00:00",
+        "time_limit": "0:00:00",
         "pipeline_override": {
             "real_finish_target_action": {
                 "action": "DoNothing",
